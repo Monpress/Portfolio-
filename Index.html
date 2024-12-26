@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+   <a href="index.html" > <img src="menu.png" width="30px" style="text-align:right; "> </a>
+    <style>
+        body {
+            font-family: fantasy;
+            text-align:;
+            margin-top: px;
+            background: #030510;
+            color:white;
+        }
+        #timer {
+            font-size: 48px;
+            color: #467;
+}
+font{
+  Color:orangered;
+  font-size: 50px;
+}
+
+a{
+  color:#030510;
+  
+}
+a:active{
+  color:#030510;
+  
+}
+a:visited{
+  color:#030510;
+}
+
+
+
+80%{
+  opacity:1;
+  transform: translate(33px, -18px) rotate(180deg);
+}
+100%{
+  opacity:0;
+  transform: translate(37px, -23px) scale(0.5)rotate(230deg);
+}
+}
+
+
+#b1{
+  transform-origin: 195.2px 232.6px;
+  animation: confb 1.2s ease-out infinite;
+}
+
+#b2{
+  transform-origin: 230.8px 219.8px;
+  animation: confb 1.2s ease-out infinite;
+}
+#b3 {transform-origin: 222.8px 190.6px;
+  animation: confb 1.2s ease-out infinite;
+}
+
+#b4 {transform-origin: 262px 188.5px;
+  animation: confb 1.2s ease-out infinite;
+}
+
+#b5 {transform-origin: 282.3px 170.6px;
+  animation: confb 1.2s ease-out infinite;
+}
+
+
+@keyframes confb {
+0%{
+  opacity:0;
+  transform: translate(-30px, 20px) rotate(0);
+}
+12%{
+  opacity:1;
+  transform: translate(25px, -10px) rotate(60deg);
+}
+76%{
+  opacity:1;
+  transform: translate(33px, -18px) rotate(180deg);
+}
+100%{
+  opacity:0;
+  transform: translate(37px, -23px) scale(0.5) rotate(240deg);
+}
+}
+
+#c1 {transform-origin: 174.8px 183.4px;
+  animation: confc 1.2s ease-out infinite;
+}
+#c2{
+  transform-origin: 178.9px 156.2px;
+  animation: confc 1.2s ease-out infinite;
+}
+
+#c3{
+  transform-origin: 206.7px 140px;
+  animation: confc 1.2s ease-out infinite;
+}
+
+#c4{
+  transform-origin: 213.5px 120.2px;
+  animation: confc 1.2s ease-out infinite;
+}
+
+@keyframes confc {
+0%{
+  opacity:0.7;
+  transform: translate(-30px, 20px) rotate(0);
+}
+18%{
+  opacity:1;
+  transform: translate(5px, -10px) rotate(60deg);
+}
+76%{
+  opacity:1;
+  transform: translate(13px, -18px) rotate(180deg);
+}
+100%{
+  opacity:0;
+  transform: translate(17px, -23px) scale(0.5) rotate(230deg);
+}
+}
+
+#d1{
+  transform-origin: 127px 176px;
+  animation: confd 1.2s ease-out infinite;
+}
+#d2 {transform-origin: 133px 118px;
+  animation: confd 1.2s ease-out infinite;
+}
+#d3{ transform-origin: 152px 100px;
+  animation: confd 1.2s ease-out infinite;
+}
+
+@keyframes confd {
+0%{
+  opacity:0.7;
+  transform: translate(-20px, 20px) rotate(0);
+}
+18%{
+  opacity:1;
+  transform: translate(-5px, -10px) rotate(60deg);
+}
+76%{
+  opacity:1;
+  transform: translate(-8px, -18px) rotate(180deg);
+}
+100%{
+  opacity:0;
+  transform: translate(-10px, -23px) scale(0.5) rotate(230deg);
+}
+}
+    </style>
+
+</head>
+<body>
+     	 <center>
+<h1><font>G</font>IVEAWAY COUNTDOW<font>N</font></h1>
+<div id="timer">00:00:00</div>
+  <br> <br> <br> 
+<a href="index.html"><img src="gift.png" width="80px"> </a>
+<a href="index.html"><img src="gift.png" width="80px"> </a>
+<img src="gift.png" width="80px">
+  <a href="index.html"> click me</a>
+  <script>
+    // Set the countdown duration in seconds (e.g., 3600 seconds = 1 hour)
+    const countdownDuration = 3600; // Change this value as needed
+
+    // Get the current time and calculate the end time
+    let endTime = localStorage.getItem('endTime');
+    if (!endTime) {
+        endTime = Date.now() + countdownDuration * 1000;
+        localStorage.setItem('endTime', endTime);
+    } else {
+        endTime = parseInt(endTime);
+    }
+
+    function updateTimer() {
+        const now = Date.now();
+        const remainingTime = endTime - now;
+
+        if (remainingTime <= 0) {
+            document.getElementById('timer').innerHTML = "00:00:00";
+            localStorage.removeItem('endTime'); // Clear the end time when countdown is finished
+            return;
+        }
+
+        const hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+        document.getElementById('timer').innerHTML = 
+            String(hours).padStart(2, '0') + ":" + 
+            String(minutes).padStart(2, '0') + ":" + 
+            String(seconds).padStart(2, '0');
+
+        // Update the timer every second
+        setTimeout(updateTimer, 1000);
+    }
+
+    // Start the timer
+    updateTimer();
+</script>
+
+</body>
+</html>
